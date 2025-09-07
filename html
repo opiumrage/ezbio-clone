@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>@udp8 — Discord Profile</title>
+  <meta name="description" content="@udp8's Discord profile card" />
+  <meta name="theme-color" content="#5865F2" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #0f1020;
+      --bg2: #111827;
+      --card: rgba(255,255,255,0.08);
+      --stroke: rgba(255,255,255,0.12);
+      --text: #e5e7eb;
+      --muted: #a1a1aa;
+      --accent: #5865F2;
+      --ok: #22c55e;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html,body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      color: var(--text);
+      background: linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow: hidden;
+    }
+    .wrap {
+      display: grid; place-items: center; height: 100%; padding: 20px;
+    }
+    .card {
+      width: min(500px, 92vw);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px) saturate(140%);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .top {
+      display: flex; align-items: center; gap: 18px;
+    }
+    .avatar {
+      width: 88px; height: 88px; border-radius: 50%;
+      background: center/cover no-repeat;
+      border: 2px solid var(--stroke);
+    }
+    .name { font-size: 26px; font-weight: 800; }
+    .tag { font-size: 14px; color: var(--muted); }
+    .presence { font-size: 13px; display: flex; align-items: center; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); }
+    .bio { margin-top: 14px; font-size: 15px; color: #d1d5db; }
+    .row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--stroke);
+      background: rgba(88,101,242,.15);
+      padding: 10px 14px; border-radius: 10px;
+      font-weight: 600; font-size: 14px;
+      cursor: pointer; color: white;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn:hover { background: rgba(88,101,242,.3); }
+    .id { padding: 8px 12px; border: 1px dashed var(--stroke); border-radius: 8px; font-size: 13px; color: var(--muted); }
+    .footer { margin-top: 18px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+    iframe.bg-music {
+      position: fixed; left: -9999px; width: 1px; height: 1px;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card">
+      <section class="top">
+        <div class="avatar" style="background-image:url('https://cdn.discordapp.com/attachments/1414114915219673119/1414208797999763569/43964-sword.gif');"></div>
+        <div>
+          <div class="name">@udp8</div>
+          <div class="tag">discord.com/users/1407877833895968870</div>
+          <div class="presence"><span class="dot"></span> online</div>
+        </div>
+      </section>
+
+      <p class="bio">“DMs open. Building cool stuff.”</p>
+
+      <div class="row">
+        <a class="btn" href="https://discord.com/users/1407877833895968870" target="_blank">Add / Message on Discord</a>
+        <button class="btn" id="copyBtn">Copy @udp8</button>
+        <span class="id">ID: 1407877833895968870</span>
+      </div>
+
+      <div class="footer">
+        <span>Made with ❤ — hosted on GitHub Pages</span>
+        <span id="year"></span>
+      </div>
+    </main>
+  </div>
+
+  <!-- Hidden YouTube player -->
+  <iframe class="bg-music"
+    src="https://www.youtube.com/embed/DBhfYWOWR_k?autoplay=1&loop=1&playlist=DBhfYWOWR_k"
+    allow="autoplay">
+  </iframe>
+
+  <script>
+    // Copy button
+    const copyBtn = document.getElementById("copyBtn");
+    copyBtn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText("@udp8");
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => copyBtn.textContent = "Copy @udp8", 1200);
+    });
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
