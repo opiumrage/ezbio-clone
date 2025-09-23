@@ -1,55 +1,251 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="./src/assets/moon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.70" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&family=Noto+Sans:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    
-    <!-- Open Graph meta tags for embed -->
-    <meta property="og:title" content="shadow">
-    <meta property="og:description" content="link in bio service | shadow">
-    <meta property="og:image" content="https://media1.tenor.com/m/B3K_YPnNyucAAAAd/porsche-911.gif">
-    <meta property="og:url" content="https://shdw.site">
+  <meta charset="UTF-8">
+  <title>solana.net</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="https://cdn.discordapp.com/embed/avatars/0.png">
+  <style>
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      margin: 0;
+      padding: 0;
+      color: #e5e5e5;
+      font-family: 'JetBrains Mono', 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #18181b;
+      position: relative;
+      overflow: hidden;
+    }
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 1;
+      background: #18181b;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(20,20,28,0.60);
+      z-index: -1;
+      pointer-events: none;
+      backdrop-filter: blur(2px);
+    }
+    .center-box {
+      position: relative;
+      z-index: 1;
+      background: rgba(35,35,43,0.45); /* semi-transparent */
+      border: none;
+      border-radius: 18px;
+      padding: 2rem 1.2rem 2.2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 260px;
+      width: 100%;
+      font-family: inherit;
+      backdrop-filter: blur(8px) saturate(1.2); /* glassy effect */
+      -webkit-backdrop-filter: blur(8px) saturate(1.2);
+      box-shadow: 0 4px 32px 0 #000a, 0 0 0 2px #23232b55;
+      animation: fadein 1.2s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #a62639;
+      margin-bottom: 1.1rem;
+      background: #23232b;
+      object-fit: cover;
+      box-shadow: 0 0 32px #a6263955, 0 0 0 4px #23232b;
+      filter: grayscale(0.25) contrast(1.1);
+    }
+    .username {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 0.2rem;
+      color: #a62639;
+      text-shadow: 0 2px 16px #a6263944, 0 0 2px #fff1;
+      text-transform: lowercase;
+      user-select: all;
+    }
+    .discord-id {
+      font-size: 1.05rem;
+      color: #a62639;
+      background: rgba(35,35,43,0.72);
+      padding: 0.3rem 0.9rem;
+      border-radius: 8px;
+      margin-bottom: 1.2rem;
+      user-select: all;
+      font-family: inherit;
+      box-shadow: 0 1px 8px #a6263922;
+      border: none;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .discord-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.5rem;
+      background: linear-gradient(90deg, #a62639cc 0%, #23232bcc 100%);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 12px #a6263933;
+      border: none;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      outline: none;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .discord-link:hover {
+      background: linear-gradient(90deg, #23232bcc 0%, #a62639cc 100%);
+      box-shadow: 0 4px 24px #a6263999;
+      transform: scale(1.04);
+    }
+    .song-info {
+      margin-top: 1.5rem;
+      font-size: 1.08rem;
+      color: #a62639;
+      text-align: center;
+      font-family: inherit;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 8px #a6263933;
+      background: rgba(35,35,43,0.72);
+      border-radius: 8px;
+      padding: 0.7rem 1rem 0.7rem 1rem;
+      box-shadow: 0 1px 8px #a6263922;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .song-info b {
+      color: #fff;
+      text-shadow: 0 1px 8px #a6263999;
+      font-size: 1.13em;
+      letter-spacing: 2px;
+    }
+    .audio-player {
+      display: none !important;
+    }
+    audio {
+      display: none !important;
+    }
+    @media (max-width: 700px) {
+      .center-box {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+      }
+      .username {
+        font-size: 1.2rem;
+      }
+      .avatar {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Video background for .mp4 (works in all modern browsers) -->
+  <video id="bg-video" autoplay loop muted playsinline>
+    <source src="https://files.catbox.moe/la9uiz.mp4" type="video/mp4">
+    <!-- fallback image if video fails -->
+    <img src="https://files.catbox.moe/9rguor.gif" alt="background" />
+  </video>
+  <div class="center-box">
+    <img class="avatar" src="https://files.catbox.moe/9rguor.gif?size=256" alt="avatar">
+    <div class="username">@udp8</div>
+    <div class="discord-id">1407877833895968870</div>
+    <a class="discord-link" href="#" target="_blank">View Discord</a>
+    <div class="song-info">
+      <span><b>LUA / HTML / CPP</b></span>
+    </div>
+    <!-- The audio element is hidden and will autoplay via JS -->
+    <audio id="autoplay-audio" src="https://files.catbox.moe/cztj93.mp3" type="audio/mpeg" loop></audio>
+  </div>
+  <script>
+    // Try to autoplay the audio as soon as possible
+    (function() {
+      const audio = document.getElementById('autoplay-audio');
+      function tryPlay() {
+        if (!audio) return;
+        audio.volume = 1;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // If autoplay is blocked, try again on user interaction
+            const resume = () => {
+              audio.play();
+              window.removeEventListener('click', resume);
+              window.removeEventListener('keydown', resume);
+            };
+            window.addEventListener('click', resume);
+            window.addEventListener('keydown', resume);
+          });
+        }
+      }
+      // Try immediately
+      tryPlay();
+      // Also try again on DOMContentLoaded just in case
+      document.addEventListener('DOMContentLoaded', tryPlay);
 
-    <title>shadow</title>
- 
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-          animateTitle();
+      // Attempt to fullscreen the site on load
+      function requestFullscreen() {
+        const el = document.documentElement;
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        } else if (el.mozRequestFullScreen) {
+          el.mozRequestFullScreen();
+        } else if (el.msRequestFullscreen) {
+          el.msRequestFullscreen();
+        }
+      }
+
+      // Try to request fullscreen on load and on user interaction (required by most browsers)
+      document.addEventListener('DOMContentLoaded', () => {
+        requestFullscreen();
       });
 
-      function animateTitle() {
-          const title = document.title;
-          const originalTitle = 'owner';
-          let index = 0;
-
-          setInterval(function () {
-              index = (index + 1) % (originalTitle.length + 1);
-              document.title = originalTitle.substring(0, index);
-          }, 300); 
+      // Also try on first user interaction if not already fullscreen
+      function ensureFullscreen() {
+        if (
+          !document.fullscreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.msFullscreenElement
+        ) {
+          requestFullscreen();
+        }
       }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+      window.addEventListener('click', ensureFullscreen, { once: true });
+      window.addEventListener('keydown', ensureFullscreen, { once: true });
+    })();
+  </script>
+</body>
 </html>
