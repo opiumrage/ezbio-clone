@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "Fuck Niggas <3",
+    "Creator of /dabhood",
     "\"Rich, Humble, Skid\""
   ];
   let bioText = '';
@@ -668,4 +668,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   typeWriterStart();
+
 });
