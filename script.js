@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   const bioMessages = [
-    "Creator of /dabhood",
+    "Founder Of Vanta Cheats",
     "\"Rich, Humble, Skid\""
   ];
   let bioText = '';
@@ -670,3 +670,4 @@ document.addEventListener('DOMContentLoaded', () => {
   typeWriterStart();
 
 });
+
